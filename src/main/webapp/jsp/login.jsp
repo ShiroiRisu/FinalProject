@@ -19,5 +19,6 @@
 		<input type="submit" value="Log in" />
 	</form>
 	<hr />
+	Кодировка запроса: ${ pageContext.request.characterEncoding } <br/>
 </body>
 </html>

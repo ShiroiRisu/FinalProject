@@ -17,7 +17,11 @@ import controller.resource.MessageManager;
 @WebServlet("/app")
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ActionFactory client;
 
+	public void init() {
+		this.client = new ActionFactory();
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -28,8 +32,6 @@ public class ControllerServlet extends HttpServlet {
 
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
-		//TODO place in init()
-		ActionFactory client = new ActionFactory();
 		ActionCommand command = client.defineCommand(request);
 
 		page = command.execute(request);

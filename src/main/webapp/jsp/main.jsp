@@ -12,6 +12,6 @@
 	${user}, hello!
 	<hr />
 	<!-- change to POST + hidden -->
-	<a href="controller?command=logout">Logout</a>
+	<a href="app?command=logout">Logout</a>
 </body>
 </html>
