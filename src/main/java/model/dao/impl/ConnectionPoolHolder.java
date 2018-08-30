@@ -4,7 +4,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import controller.resource.DatabaseManager;
+import controller.util.DatabaseManager;
 
 public class ConnectionPoolHolder {
 	private static volatile DataSource dataSource;
@@ -15,6 +15,7 @@ public class ConnectionPoolHolder {
 			synchronized (ConnectionPoolHolder.class) {
 				if (dataSource == null) {
 					BasicDataSource ds = new BasicDataSource();
+					ds.setDriverClassName(DatabaseManager.getProperty("db.driver"));
 					ds.setUrl(DatabaseManager.getProperty("db.url"));
 					ds.setUsername(DatabaseManager.getProperty("db.username"));
 					ds.setPassword(DatabaseManager.getProperty("db.password"));

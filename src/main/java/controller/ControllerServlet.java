@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.command.ActionCommand;
 import controller.command.factory.ActionFactory;
-import controller.resource.ConfigurationManager;
-import controller.resource.MessageManager;
+import controller.util.ConfigurationManager;
+import controller.util.MessageManager;
 
-@WebServlet("/app")
+@WebServlet("/api/*")
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ActionFactory client;
@@ -30,8 +30,15 @@ public class ControllerServlet extends HttpServlet {
 		processRequest(request, response);
 	}
 
+	//TODO redirect without invoking command into exception
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = null;
+		String path = request.getRequestURI();
+		System.out.println(path);
+		//path = path.replaceAll(".*/app/", "");
+		//String param = request.getParameter("command");
+		//if (!param || param.equals(""))
+			
 		ActionCommand command = client.defineCommand(request);
 
 		page = command.execute(request);

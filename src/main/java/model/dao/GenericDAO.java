@@ -5,7 +5,7 @@ import java.util.List;
 import model.entity.Entity;
 
 public interface GenericDao<K, T extends Entity> extends AutoCloseable {
-	void create(T entity);
+	boolean create(T entity);
     T findById(K id);
     List<T> findAll();
     void update(T entity);

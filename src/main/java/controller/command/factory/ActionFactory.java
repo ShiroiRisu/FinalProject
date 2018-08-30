@@ -9,7 +9,7 @@ import controller.command.client.CommandEnum;
 public class ActionFactory {
 	public ActionCommand defineCommand(HttpServletRequest request) {
 		ActionCommand current = new EmptyCommand();
-		//swap to sessionrequestcontent
+		//TODO swap to sessionrequestcontent
 		String action = request.getParameter("command");
 		
 		if (action == null || action.isEmpty()) { return current; }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +6,11 @@
 <title>Login</title>
 </head>
 <body>
-	<form name="loginForm" method="POST" action="app">
+	${successRegisterMessage} <br />
+	<form name="loginForm" method="POST" action="${pageContext.request.contextPath}/api/login">
 		<input type="hidden" name="command" value="login" /> 
 		Login:<br /> 
-		<input type="text" name="login" value="" /> <br />
+		<input type="text" name="username" value="" /> <br />
 		Password:<br /> 
 		<input type="password" name="password" value="" /> <br />
 		${errorLoginPassMessage} <br /> 
@@ -19,6 +19,11 @@
 		<input type="submit" value="Log in" />
 	</form>
 	<hr />
-	Кодировка запроса: ${ pageContext.request.characterEncoding } <br/>
+	<form method="POST" action="${pageContext.request.contextPath}/api/register">
+		<input type="hidden" name="command" value="register" />
+		<input type="submit" value="Register" />
+	</form>
+	<hr />
+	Enc filter test: ${ pageContext.request.characterEncoding } <br/>
 </body>
 </html>

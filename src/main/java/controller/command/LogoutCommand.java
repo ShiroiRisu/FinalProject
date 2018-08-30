@@ -2,7 +2,7 @@ package controller.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-import controller.resource.ConfigurationManager;
+import controller.util.ConfigurationManager;
 
 public class LogoutCommand implements ActionCommand {
 

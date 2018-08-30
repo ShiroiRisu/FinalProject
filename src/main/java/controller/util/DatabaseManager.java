@@ -1,4 +1,4 @@
-package controller.resource;
+package controller.util;
 
 import java.util.ResourceBundle;
 

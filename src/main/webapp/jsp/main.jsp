@@ -4,14 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Main</title>
 </head>
 <body>
 	<h3>Welcome</h3>
 	<hr />
 	${user}, hello!
 	<hr />
-	<!-- change to POST + hidden -->
-	<a href="app?command=logout">Logout</a>
+	
+	<form method="POST" action="${pageContext.request.contextPath}/api">
+		<input type="submit" name="command" value="logout" />
+	</form>
+
+	Enc filter test: ${ pageContext.request.characterEncoding }
+	<br /> Role: ${role}
+	<br />
+	<hr />
+	Counter: ${counter}
+	<br />
+	<hr />
+	MaxInactiveInterval: ${pageContext.session.maxInactiveInterval}
+	<br /> ID session: ${pageContext.session.id}
+	<br /> Lifecycle: ${lifecycle}
+	<br />
 </body>
 </html>
