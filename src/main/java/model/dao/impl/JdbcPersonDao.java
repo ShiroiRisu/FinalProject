@@ -74,9 +74,7 @@ public class JdbcPersonDao implements PersonDao {
 			ps.setString(1, username);
 			ResultSet rs = ps.executeQuery();
 			PersonMapper mapper = new PersonMapper();
-            if (rs.next()){
-                result = Optional.of(mapper.extractFromResultSet(rs));
-            }
+            if (rs.next()) { result = Optional.of(mapper.extractFromResultSet(rs)); }
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

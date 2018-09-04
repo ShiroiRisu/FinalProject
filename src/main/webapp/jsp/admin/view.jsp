@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>never gonna see it lul</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="/jsp/main.jsp"/>
+
 </body>
 </html>

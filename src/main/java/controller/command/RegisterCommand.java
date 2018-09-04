@@ -8,10 +8,6 @@ import model.entity.Person;
 import model.service.PersonService;
 //TODO static finals to interface!!!
 public class RegisterCommand implements ActionCommand {
-	private static final String PARAM_NAME_USERNAME = "username";
-	private static final String PARAM_NAME_PASSWORD = "password";
-	private static final String PARAM_NAME_NAME = "name";
-	
 	private PersonService personService;
 	
 	public RegisterCommand(PersonService personService) {

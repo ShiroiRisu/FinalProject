@@ -5,6 +5,8 @@ public class Person extends Entity {
 	private String username;
 	private String name;
 	private String password;
+	
+	public enum ROLE { GUEST, CLIENT, MASTER, ADMIN }
 
 	public Person() {}
 
@@ -23,7 +25,5 @@ public class Person extends Entity {
 	public void setPassword(String password) { this.password = password; }
 
 	@Override
-	public String toString() {
-		return "Person [id=" + id +", username=" + username + ", name=" + name + "]";
-	}
+	public String toString() { return "Person [id=" + id +", username=" + username + ", name=" + name + "]"; }
 }

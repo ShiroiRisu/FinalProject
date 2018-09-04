@@ -1,8 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashSet;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.command.ActionCommand;
 import controller.command.factory.ActionFactory;
-import controller.util.ConfigurationManager;
-import controller.util.MessageManager;
 
-@WebServlet("/api/*")
+@WebServlet("/app/*")
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ActionFactory client;
 
 	public void init() {
 		this.client = new ActionFactory();
+		this.getServletConfig().getServletContext().setAttribute("loggedUsers", new HashSet<String>());
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
@@ -30,26 +30,34 @@ public class ControllerServlet extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	//TODO redirect without invoking command into exception
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String page = null;
-		String path = request.getRequestURI();
-		System.out.println(path);
-		//path = path.replaceAll(".*/app/", "");
-		//String param = request.getParameter("command");
-		//if (!param || param.equals(""))
-			
+		/*System.out.println("IN SERV| " + request.getRequestURI());
+        System.out.println(request.getParameter("username"));
+        System.out.println(request.getParameter("command"));
+        HttpSession	session = request.getSession();
+        Enumeration<String> e = session.getAttributeNames();
+        while ( e.hasMoreElements())
+        {
+            Object tring;
+            if ((tring = e.nextElement()) != null)
+            {
+                System.out.println(session.getAttribute((String) tring));
+            }
+
+        }*/
+        //
+		System.out.println(this.getServletContext().getAttribute("loggedUsers"));
+        String page = null;
 		ActionCommand command = client.defineCommand(request);
-
 		page = command.execute(request);
+		System.out.println("page after" + command + "command: " + page);
 
-		if (page != null) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-			dispatcher.forward(request, response);
+		if (page.contains("redirect:")) {
+			response.sendRedirect(page.replace("redirect:", request.getContextPath()));
 		} else {
-			page = ConfigurationManager.getProperty("path.page.index");
-			request.getSession().setAttribute("nullPage", MessageManager.getMessage("message.nullpage"));
-			response.sendRedirect(request.getContextPath() + page);
-		}
+			request.getRequestDispatcher(page).forward(request, response);
+        } 
+		
+        //System.out.println("am forwardin");
 	}
 }

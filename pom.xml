@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gg.shiroirisu</groupId>
-	<artifactId>BeautySalonApp</artifactId>
+	<artifactId>BeautySalon</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>BeautySalonApp Maven Webapp</name>
+	<name>BeautySalon Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -54,6 +54,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>BeautySalonApp</finalName>
+		<finalName>BeautySalon</finalName>
 	</build>
 </project>
