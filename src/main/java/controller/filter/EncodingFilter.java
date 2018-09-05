@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 //dispatcherTypes = {DispatcherType.FORWARD}, 
-@WebFilter(urlPatterns = { "/*" }, dispatcherTypes = {DispatcherType.FORWARD}, initParams = {
+@WebFilter(urlPatterns = { "/app/*" }, dispatcherTypes = {DispatcherType.FORWARD}, initParams = {
 		@WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding param") })
 public class EncodingFilter implements Filter {
 	private String encoding;

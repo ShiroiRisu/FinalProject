@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.util.ConfigurationManager;
 import model.entity.Person;
 
-@WebFilter("/*")
+@WebFilter("/app/*")
 public class AccessFilter implements Filter {
 
     public AccessFilter() {

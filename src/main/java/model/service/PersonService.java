@@ -18,8 +18,8 @@ public class PersonService {
 	
 	public Optional<Person> login(String username) {
 		Optional<Person> result = Optional.empty();
-		try(PersonDao personDao = daoFactory.createPersonDao()) {
-			result = personDao.findByUsername(username);
+		try(PersonDao dao = daoFactory.createPersonDao()) {
+			result = dao.findByUsername(username);
 		}
 		return result;
 	}
