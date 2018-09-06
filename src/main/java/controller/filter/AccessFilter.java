@@ -30,10 +30,10 @@ public class AccessFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse resp = (HttpServletResponse) response;
-		Person.ROLE role = (Person.ROLE) req.getSession().getAttribute("role");
+		String role = (String) req.getSession().getAttribute("role");
 		if (role == null)
 		{
-			role = Person.ROLE.GUEST;
+			role = Person.ROLE.GUEST.toString();
 			req.getSession().setAttribute("role", role);
 			req.getServletContext().getRequestDispatcher(ConfigurationManager.getProperty("path.page.main")).forward(req, resp);
 			return;

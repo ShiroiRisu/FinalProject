@@ -20,8 +20,10 @@ public class RegisterCommand implements ActionCommand {
 		String username = request.getParameter(PARAM_NAME_USERNAME);
 		String password = request.getParameter(PARAM_NAME_PASSWORD);
 		String name = request.getParameter(PARAM_NAME_NAME);
+		String role = request.getParameter(PARAM_NAME_ROLE);
+		if (role == null) { role = Person.ROLE.CLIENT.toString(); }
 		
-		if (personService.insert(new Person(0, username, password, name))) {
+		if (personService.insert(new Person(0, username, password, name, Person.ROLE.valueOf(role)))) {
 			request.setAttribute("successRegisterMessage", MessageManager.getMessage("message.regsuccess"));
 			page = ConfigurationManager.getProperty("path.page.login");
 		} else {

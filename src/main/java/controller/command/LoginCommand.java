@@ -25,10 +25,10 @@ public class LoginCommand implements ActionCommand {
 		Optional<Person> person = personService.login(username);
 		if (person.isPresent() && person.get().getPassword().equals(password)) { //TODO pass hash?
 			CommandUtility.checkUserIsLogged(request, username);
-			CommandUtility.setUserRole(request, Person.ROLE.CLIENT, username);
-			page = ("redirect:/app/main");
+			CommandUtility.setUserRole(request, person.get().getRole().toString(), username);
+			page = ("redirect:/app/" + person.get().getRole().toString().toLowerCase());
 		} else {
-			request.setAttribute("errorLoginPassMessage", MessageManager.getMessage("message.loginerror"));
+			request.setAttribute("errorLoginMessage", MessageManager.getMessage("message.loginerror"));
 			page = ConfigurationManager.getProperty("path.page.login");
 		}
 		return page;

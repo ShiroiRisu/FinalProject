@@ -20,6 +20,7 @@ public class ControllerServlet extends HttpServlet {
 	public void init() {
 		this.client = new ActionFactory();
 		this.getServletConfig().getServletContext().setAttribute("loggedUsers", new HashSet<String>());
+		System.out.println("servinit");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,6 +48,8 @@ public class ControllerServlet extends HttpServlet {
         }*/
         //
 		System.out.println(this.getServletContext().getAttribute("loggedUsers"));
+		System.out.println(request.getSession().getAttribute("userName"));
+		System.out.println(request.getSession().getAttribute("role"));
         String page = null;
 		ActionCommand command = client.defineCommand(request);
 		page = command.execute(request);

@@ -15,6 +15,7 @@ public class PersonMapper implements EntityMapper<Person> {
 		person.setName(rs.getString("name"));
 		person.setUsername(rs.getString("username"));
 		person.setPassword(rs.getString("password"));
+		person.setRole(Person.ROLE.valueOf(rs.getString("role").toUpperCase()));
 		return person;
 	}
 

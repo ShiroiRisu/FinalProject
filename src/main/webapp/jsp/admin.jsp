@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="icon" href="../img/favicon.ico">
-<title>never gonna see it lul</title>
+<title>True face of God</title>
 </head>
 <body>
-  <c:redirect url="/app/main" />
+  
+  
+  
+  <a href="${pageContext.request.contextPath }/app/main">Mainpage</a>
 </body>
 </html>

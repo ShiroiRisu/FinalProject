@@ -20,10 +20,11 @@ public class JdbcPersonDao implements PersonDao {
 	
 	@Override
 	public boolean create(Person entity) {
-		try(PreparedStatement ps = connection.prepareCall("INSERT INTO person(username, password, name) VALUES(?, ?, ?)")) {
+		try(PreparedStatement ps = connection.prepareCall("INSERT INTO person(username, password, name, role) VALUES(?, ?, ?, ?)")) {
 			ps.setString(1, entity.getUsername());
 			ps.setString(2, entity.getPassword());
 			ps.setString(3, entity.getName());
+			ps.setString(4, entity.getRole().toString().toLowerCase());
 			ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();
 			if (rs.next()) {

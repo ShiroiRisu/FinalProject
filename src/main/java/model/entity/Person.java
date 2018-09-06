@@ -5,16 +5,18 @@ public class Person extends Entity {
 	private String username;
 	private String name;
 	private String password;
+	private ROLE role;
 	
 	public enum ROLE { GUEST, CLIENT, MASTER, ADMIN }
 
 	public Person() {}
 
-	public Person(int id, String username, String password, String name) {
+	public Person(int id, String username, String password, String name, ROLE role) {
 		super(id);
 		this.username = username;
 		this.name = name;
 		this.password = password;
+		this.role = role;
 	}
 
 	public String getUsername() { return username; }
@@ -23,7 +25,6 @@ public class Person extends Entity {
 	public void setName(String name) { this.name = name; }
 	public String getPassword() { return password; }
 	public void setPassword(String password) { this.password = password; }
-
-	@Override
-	public String toString() { return "Person [id=" + id +", username=" + username + ", name=" + name + "]"; }
+	public ROLE getRole() { return role; }
+	public void setRole(ROLE role) { this.role = role; }
 }

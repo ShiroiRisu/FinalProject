@@ -4,8 +4,6 @@ import java.util.HashSet;
 
 import javax.servlet.http.HttpServletRequest;
 
-import model.entity.Person;
-
 public class CommandUtility {
 	public static boolean checkUserIsLogged(HttpServletRequest request, String userName) {
 		@SuppressWarnings("unchecked")
@@ -19,7 +17,7 @@ public class CommandUtility {
 		return false;
 	}
 
-	public static void setUserRole(HttpServletRequest request, Person.ROLE role, String name) {
+	public static void setUserRole(HttpServletRequest request, String role, String name) {
 		request.getSession().setAttribute("userName", name);
 		request.getSession().setAttribute("role", role);
 	}
